@@ -7,6 +7,7 @@
 
 typedef uint8_t u8;
 
+
 struct TemporaryAllocator {
     void* At;
     void* End;
