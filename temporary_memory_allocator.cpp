@@ -15,6 +15,7 @@ struct TemporaryAllocator {
     void* Stack[TEMP_MEM_STACK_LENGTH];
 };
 
+
 static TemporaryAllocator
 CreateAllocator(size_t MemorySize)
 {
@@ -27,6 +28,7 @@ CreateAllocator(size_t MemorySize)
     return Alloc;
 }
 
+
 static void
 DestroyAllocator(TemporaryAllocator *Alloc)
 {
@@ -34,6 +36,7 @@ DestroyAllocator(TemporaryAllocator *Alloc)
     Alloc->At = NULL;
     Alloc->End = NULL;
 }
+
 
 static void
 StartMemoryFrame(TemporaryAllocator *Alloc)
@@ -44,6 +47,7 @@ StartMemoryFrame(TemporaryAllocator *Alloc)
     Alloc->Index++;
 }
 
+
 static void
 EndMemoryFrame(TemporaryAllocator *Alloc)
 {
@@ -53,6 +57,7 @@ EndMemoryFrame(TemporaryAllocator *Alloc)
     Alloc->At = Alloc->Stack[Alloc->Index];
     Alloc->Stack[Alloc->Index] = NULL;
 }
+
 
 static void*
 AllocateMemory(size_t MemorySize, TemporaryAllocator *Alloc)
@@ -66,6 +71,7 @@ AllocateMemory(size_t MemorySize, TemporaryAllocator *Alloc)
 
     return OldBuffer;
 }
+
 
 #undef TEMP_MEM_SIZE
 #undef TEMP_MEM_STACK_LENGTH
